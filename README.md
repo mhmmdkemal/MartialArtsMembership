@@ -16,7 +16,7 @@ Martial Arts Gym
 
 - Outside of what is required (B)
     - Application is responsive
-    - 
+    - Application has a map feature
 - Future Implementation
     - Add an upload for user profile picture 
     - Family Plan relationship 
