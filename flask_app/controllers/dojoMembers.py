@@ -1,10 +1,20 @@
 from flask_app import app
 from flask_app.models import user, dojoMember 
 from flask import render_template, request, redirect, session
+from flask_paginate import Pagination, get_page_parameter
+
 
 #Routes below
 @app.route("/member/dashboard")
 def all_member_page():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, total=user.User.get_user_by_id(data).count(), search=search, record_name='users')
+
     #check if "user_id" is not in session if not redirect
     if "user_id" not in session:
         return redirect("/")
@@ -12,7 +22,7 @@ def all_member_page():
     data = {
         "id": session["user_id"]
     }
-    return render_template("all_dojoMember.html", this_user= user.User.get_user_by_id(data), all_member=dojoMember.DojoMember.get_all_member())
+    return render_template("all_dojoMember.html", this_user= user.User.get_user_by_id(data), all_member=dojoMember.DojoMember.get_all_member(),pagination=pagination)
 
 #route that will show the new dojoMember page 
 @app.route("/member/new/member")
