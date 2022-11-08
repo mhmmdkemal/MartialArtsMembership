@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/style.css') }}" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Add Member</title>
+</head>
+<body class="body">
+    <div class="container-fluid background centerVertically nav">
+        <div class="container-fluid background centerVertically left">
+            <p><strong>Welcome, {{this_user.first_name}} ({{this_user.account_type}})</strong></p> 
+            <p class="left">Add Dojo Member</p>
+        </div>
+        <img src="../../static/dojo.png" height="100px">
+        <div class="container-fluid background centerVertically right">
+            <p><a  class="btn blue_btn" href="/member/dashboard">Dashboard</a><a  class="btn red_btn" href="/logout">Logout</a></p>
+            <p><a  class="btn blue_btn" href="/user/account">My Members</a><a class="btn blue_btn right"  href="/member/new/member">Add a member</a></p>
+        </div>
+    </div>
+
+
+    <form action="/member/add_to_db" method="POST"> 
+        {% with messages = get_flashed_messages() %}     
+            {% if messages %}                            
+                {% for message in messages %}            
+                    <p>{{message}}</p>                  
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="container-fluid background">
+            <div>
+                <div class="container">
+                    <label for="first_name" class="label-col">First Name:</label>
+                    <input type="text" name="first_name" id="first_name" > 
+                </div>
+                <div class="container">
+                    <label for="last_name" class="label-col">Last Name:</label>
+                    <input type="text" name="last_name" id="last_name" >
+                </div>
+                <div class="container">
+                    <label for="age" class="label-col">Age:</label>
+                    <input type="number" name="age" id="age">
+                </div>
+                <div class="container">
+                    <select class="upper-case" name="location" id="location">
+                        <option value="md">Maryland</option>
+                        <option value="va">virginia</option>
+                        <option value=dc">District of Columbia</option>
+                        <option value="nj">New Jersey</option>
+                    </select>
+                </div>
+                <div class="container">
+                    <select class="upper-case" name="martial_type" id="martial_type">
+                        <option value="jiu-jitsu">Jiu-Jitsu</option>
+                        <option value="judo">Judo</option>
+                        <option value="muay-thai">Muay Thai</option>
+                        <option value="boxing">Boxing</option>
+                    </select>
+                </div>
+                <div class="container">
+                    <select class="upper-case" name="plan_type" id="plan_type">
+                        <option value="gold">Gold</option>
+                        <option value="silver">Silver</option>
+                    </select>
+                </div>
+
+                <div class="container">
+                    <label for="date_received">Date Received:</label>
+                    <input type="date" id="date_received" name="date_received" value="2022-10-01">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <input  type="submit" value="add" class="offset-btn" >
+        </div>
+
+    </form>
+</body>
+</html>

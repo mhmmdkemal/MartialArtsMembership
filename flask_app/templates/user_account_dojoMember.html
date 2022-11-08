@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/style.css') }}" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>User Members</title>
+</head>
+<body class="body">
+    <div class="container-fluid background centerVertically nav">
+        <div class="container-fluid background centerVertically left">
+            <p><strong> Welcome, {{this_user.first_name}} ({{this_user.account_type}})</strong></p> 
+            <p class="left">A site to track members</p>
+        </div>
+        <img src="../static/dojo.png" height="100px">
+        <div class="container-fluid background centerVertically right">
+            <p><a  class="btn blue_btn" href="/member/dashboard">Dashboard</a><a  class="btn red_btn" href="/logout">Logout</a></p>
+            <p><a class="btn blue_btn right"  href="/member/new/member">Add a member</a></p>
+        </div>
+    </div>
+    <div class="container">
+        <h3>My Members</h3>
+        <table class="table table-striped">
+            <thead >
+                <tr>
+                    <th>Full Name</th>
+                    <th>Age</th>
+                    <th>Location</th>
+                    <th>Martial Art Type</th>
+                    <th>Plan Type</th>
+                    <th>Date Received</th>
+                    <th>Actions</th>
+                </tr>
+                <tbody>
+                    {% for member in all_member%}
+                        {% if member.user.id == session["user_id"] %}
+                            <tr>
+                                <td>{{member.first_name}} {{member.last_name}}</td>
+                                <td>{{member.age}}</td>
+                                <td class="upper-case" >{{member.location}}</td>
+                                <td>{{member.martial_type}}</td>
+                                <td>{{member.plan_type}}</td>
+                                <td>{{member.date_received}}</td>
+                                <td><a href="/member/show/{{member.id}}">Details</a>
+                                    <a href="/member/{{member.id}}/edit">Edit</a>
+                                    {% if member.user.account_type == "admin" %}
+                                        <a href="/member/{{member.id}}/delete">Delete</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </thead>
+        </table>
+    </div>
+    <div class="container">
+        <a class="btn blue_btn" href="/member/user/account">User Member List</a>
+    </div>
+
+</body>
+</html>
+

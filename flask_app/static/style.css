@@ -1,0 +1,174 @@
+* {
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+
+.body            
+{
+    height: 100%;
+    background-color:ghostwhite;
+    font-size:14px;
+    font-family:sans-serif;
+}
+.nav{
+    background-color: #3caeef;
+    padding: 0;
+    margin: 0;
+}
+.reg_title{
+    color: #3caeef;
+}
+
+.log_title{
+    color: #80d50e;
+}
+
+.btn{
+    width: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 30px;
+    align-items:center;
+    margin-left: 5px;
+}
+
+
+.red_btn {
+    background-color:red;
+}
+
+.blue_btn {
+    background-color:#80d50e;
+}
+
+.background, .col-sm-4{
+    display: flex;
+    justify-content: space-between
+}
+
+.centerVertically{
+    align-items: center
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 8px;
+
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #80d50e;
+    color: white;
+}
+
+
+.allDojos{
+    display: flex;
+    justify-content: space-around
+}
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #80d50e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #80d50e;
+}
+
+div {
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly
+}
+
+input, textarea {
+    width:250px;
+    padding: 3px;
+    border: none;
+}
+
+.nav{
+    display: flex;
+    justify-content:space-around;
+}
+
+.border{
+    border-style: dashed;
+    margin-bottom: 1%;
+}
+
+.left {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.right {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.reg_btn {
+    background-color:#3caeef !important;
+}
+
+.space-around{
+    justify-content: space-around;
+}
+
+
+.padding{
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.upper-case{
+    text-transform:uppercase;
+}

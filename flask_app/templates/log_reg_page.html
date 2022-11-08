@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/style.css') }}" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <title>Login/Register</title>
+</head>
+<body class="body">
+    <div class="nav even">
+        <div class="container-fluid background centerVertically">
+            <p> Martial Arts Registration Page</p> 
+            <img src="../static/dojo.png" height="100px">
+            <p>Please register for an account or sign in! </p> 
+        </div>
+    </div>
+
+    <div class="container-fluid background ">
+
+        <div class="col-sm-4 space-around container" >
+            <form  action="/register" method="POST"> 
+                <h3 class="reg_title">Register</h3>
+                {% with messages = get_flashed_messages(category_filter=["register"]) %} 
+                    {% if messages %}                           
+                        {% for message in messages %}            
+                            <p>{{message}}</p>                   
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <label for="first_name">First name:</label>
+                <div class="form-group">
+                    <input type="text" name="first_name" id="first_name">
+                </div>
+                <label for="last_name">Last name:</label>
+                <div class="form-group">
+                    <input type="text" name="last_name" id="last_name">
+                </div>
+                <label for="account_type">Account Type:</label>
+                <div class="form-group">
+                    <select name="account_type" id="account_type">
+                        <option value="admin">Admin</option>
+                        <option value="guest">Guest</option>
+                    </select>
+                </div>
+
+                <label for="email">Email:</label>
+                <div class="form-group">
+                    <input type="email" name="email" id="email">
+                </div>
+                <label for="password">Password:</label>
+                <div class="form-group">
+                    <input type="password" name="password" id="password">
+                </div>
+                <label for="confirm_password">Confirm password:</label>
+                <div class="form-group">
+                    <input type="password" name="confirm_password" id="confirm_password">
+                </div>
+                <input class="reg_btn" type="submit" value="Register" class="offset-btn">
+            </form>
+        </div>
+        <div class="col-sm-4 space-around container">
+            <form action="/login" method="POST">
+                <h3 class="log_title">Log in</h3>
+                {% with messages = get_flashed_messages(category_filter=["login"]) %}
+                    {% if messages %}                            
+                        {% for message in messages %}            
+                            <p>{{message}}</p>                   
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <label for="email">Email:</label>
+                <div class="form-group">
+                    <input type="email" name="email" id="email">
+                </div>
+                <label for="password">Password:</label>
+                <div class="form-group">
+                    <input type="password" name="password" id="password">
+                </div>
+                <input type="submit" value="Log in" class="offset-btn">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
